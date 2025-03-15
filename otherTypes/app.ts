@@ -1,55 +1,23 @@
-//object,array,tuple, enum
+//! unknown type
+//! must check the type before using it
+let data: unknown 
+data = "Hello";
+data = 42;
+data = true;
 
-//! --------------------------- array --------------------- //
-
-const numbers: number[] = [23, 45, 12, 34];
-const fruits: string[] = ["apple,banana", "mango"];
-
-//! ------------------- object --------------------- //
-
-const user: {
-  name: string;
-  age: number;
-  isStudent: boolean;
-  subjects: string[]; // array of string
-} = {
-  name: "Arjun",
-  age: 21,
-  isStudent: true,
-  subjects: ["maths", "english", "hindi"],
-};
-
-
-//! ------------------- tuple --------------------- //
-
-let data: [string, number, boolean, number];
-data = ["Arjun", 21, false, 22];
-
-//! ------------------- enum --------------------- //
-enum Role{
-    USER ="user",ADMIN="admin",SUPERADMIN="superadmin"
+if (typeof data === "string") {
+    console.log(data.toUpperCase());
 }
 
-const role: Role = Role.ADMIN;
-console.log(role)
+//!  It is used in functions that throw errors or never return.
+//!throw error 
+function throwError(message: string): never {
+  throw new Error(message);
+}
 
-const output = document.getElementById("output");
-if (output) {
-  output.innerHTML = `
-     <h4>-------------------- TypeScript Data Types Example -------------------</h4>
-     <p><strong>Array of Numbers : </strong>${numbers.join(",")}</p>
-       <p><strong>Array of fruits : </strong>${fruits}</p>
-
-        <br>
-         <p> --------- OBJECT ---------</p>
-        <p><strong>User : </strong>${JSON.stringify(user)}</p>
-        
-       <br>
-         <p> --------- TUPLE ---------</p>
-        <p><strong>Data : </strong>${data.join("|")}</p>
-
-        <br>
-         <p> --------- ENUM ---------</p>
-        <p><strong>Role : </strong>${role}</p>
-    `;
+//!infinite loop
+function infiniteLoop(): never {
+  while (true) {
+    console.log("Running forever...");
+  }
 }
